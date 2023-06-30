@@ -9,7 +9,7 @@ import Answer from './Answer.jsx';
 const AnswerList = ({ answers }) => {
   const [expandAnswers, setExpandAnswers] = useState(false);
   const [buttonCopy, setButtonCopy] = useState('See more answers');
-  const [ids, setIds] = useState(Object.keys(answers));
+  const [ids, setIds] = useState(Object.keys(answers)); //NOTE: not needed if mapped in parent component
 
   const handleExpand = () => {
     setExpandAnswers(!expandAnswers);

@@ -5,6 +5,7 @@ import Question from './Question.jsx';
 
 const QuestionList = ({ questions }) => {
 
+  //NOTE: length isn't needed as state; can use questions.length
   const [length, setLength] = useState(questions.length)
 
   //   Show 4 q's at a time; splice array in case there are more questions
@@ -13,6 +14,7 @@ const QuestionList = ({ questions }) => {
 
   return (
     <>
+    {/* NOTE: mapped components should have a unique key prop */}
       {length === 0 ? (
         <p>No questions. Add one below!</p>
       ) : (
