@@ -8,7 +8,7 @@ import { LeftArrow, RightArrow } from '../Common/Arrow.jsx';
 import { getProductDetails, dataMap, getImages, getReviews, getRelated } from '../Common/routes.js';
 import createImageObjects from '../Common/CreateImageObjects.js'
 
-export default function App(ogProduct) {
+export default function RelatedItems(ogProduct) {
   const [items, setItems] = React.useState([]);
   const [selected, setSelected] = React.useState([]);
   const [position, setPosition] = React.useState(0);
@@ -20,15 +20,13 @@ export default function App(ogProduct) {
     function getRelatedProducts() {
       if (ogProduct.product.id) {
         getRelated(ogProduct.product.id).then((response) => {
-          return Promise.all(response.data.map(getProductDetails));
+          return Promise.all(response.map(getProductDetails));
         }).then((response) => {
-          let newItems = response.map(dataMap);
-          stateToBeSet = newItems;
-          return newItems;
+          stateToBeSet = response;
+          return response;
         }).then((newItems) => {
           return Promise.all(newItems.map(getImages));
-        }).then((styles) => {
-          let dataStyles = styles.map(dataMap);
+        }).then((dataStyles) => {
           let itemsWithImgs = [];
           for (let idx = 0; idx < dataStyles.length; idx++) {
             itemsWithImgs.push(stateToBeSet[idx]);
@@ -37,8 +35,7 @@ export default function App(ogProduct) {
           return itemsWithImgs;
         }).then((newItems) => {
           return Promise.all(newItems.map(getReviews));
-        }).then((reviews) => {
-          let dataReviews = reviews.map(dataMap);
+        }).then((dataReviews) => {
           let reviewsScores = dataReviews.map((el) => {
             let totalTimed = +el.ratings['1'] + (+el.ratings['2'] * 2) + (+el.ratings['3'] * 3) + (+el.ratings['4'] * 4) + (+el.ratings['5'] * 5);
             let total = +el.ratings['1'] + +el.ratings['2'] + +el.ratings['3'] + +el.ratings['4'] + +el.ratings['5'];

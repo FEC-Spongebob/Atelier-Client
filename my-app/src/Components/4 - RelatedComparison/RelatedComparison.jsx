@@ -10,7 +10,7 @@ const [product, setProduct] = useState([]);
 const [ogInOutfit, setOgInOutfit] = React.useState(false);
 
 const getOutfit = () => {
-  setOutfit([37312, 37314, 37313])
+  setOutfit([37311, 37312, 37314, 37313])
 }
 
 const getProduct = () => {

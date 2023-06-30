@@ -8,7 +8,7 @@ import { LeftArrow, RightArrow } from '../Common/Arrow.jsx';
 import { getProductDetails, dataMap, getImages, getReviews } from '../Common/routes.js';
 import createImageObjects from '../Common/CreateImageObjects.js'
 
-export default function App( {ogProduct, outfit, setOutfit, ogInOutfit, setOgInOutfit} ) {
+export default function Outfits( {ogProduct, outfit, setOutfit, ogInOutfit, setOgInOutfit} ) {
   const [items, setItems] = React.useState([]);
   const [selected, setSelected] = React.useState([]);
   const [position, setPosition] = React.useState(0);
@@ -16,23 +16,22 @@ export default function App( {ogProduct, outfit, setOutfit, ogInOutfit, setOgInO
 
   var stateToBeSet = [];
 
-  if(outfit !== undefined && ogProduct !== undefined) {
-    if(outfit.includes(ogProduct.id)) {
-      setOgInOutfit(true);
+  React.useEffect(() => {
+    if(outfit !== undefined && ogProduct !== undefined) {
+      if(outfit.includes(ogProduct.id)) {
+        setOgInOutfit(true);
+      }
     }
-  }
+  }, [outfit, ogProduct])
 
   React.useEffect(() => {
     function getProducts() {
-
-      Promise.all(outfit.map(getProductDetails)).then((response) => {
-        let newItems = response.map(dataMap);
+      Promise.all(outfit.map(getProductDetails)).then((newItems) => {
         stateToBeSet = newItems;
         return newItems;
       }).then((newItems) => {
         return Promise.all(newItems.map(getImages));
-      }).then((styles) => {
-        let dataStyles = styles.map(dataMap);
+      }).then((dataStyles) => {
         let itemsWithImgs = [];
         for (let idx = 0; idx < dataStyles.length; idx++) {
           itemsWithImgs.push(stateToBeSet[idx]);
@@ -41,8 +40,7 @@ export default function App( {ogProduct, outfit, setOutfit, ogInOutfit, setOgInO
         return itemsWithImgs;
       }).then((newItems) => {
         return Promise.all(newItems.map(getReviews));
-      }).then((reviews) => {
-        let dataReviews = reviews.map(dataMap);
+      }).then((dataReviews) => {
         let reviewsScores = dataReviews.map((el) => {
           let totalTimed = +el.ratings['1'] + (+el.ratings['2'] * 2) + (+el.ratings['3'] * 3) + (+el.ratings['4'] * 4) + (+el.ratings['5'] * 5);
           let total = +el.ratings['1'] + +el.ratings['2'] + +el.ratings['3'] + +el.ratings['4'] + +el.ratings['5'];
@@ -57,7 +55,6 @@ export default function App( {ogProduct, outfit, setOutfit, ogInOutfit, setOgInO
         setItems(itemsWithReviewScores);
         return itemsWithReviewScores;
       });
-
     }
     getProducts();
   }, [outfit]);

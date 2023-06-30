@@ -7,21 +7,46 @@ import ImageSlides from '../Common/ImageSlides.jsx'
 import '../Common/imageSlides.css';
 import usePreventBodyScroll from '../Common/PreventBodyScroll.jsx';
 
-export default function Card({ title, price, category, review, img, itemId, ogProduct, features }) {
+export default function RelatedCard({ title, price, category, review, img, itemId, ogProduct, features }) {
   const visibility = React.useContext(VisibilityContext);
   const modalRef = useRef(null);
   const [currentStyle, setCurrentStyle] = React.useState(0);
   const { disableScroll, enableScroll } = usePreventBodyScroll();
+  const [loaded, setLoaded] = React.useState(false);
+  const apiRef = React.useRef({});
 
-  // React.useEffect(() => {
 
-  // }, [currentStyle]);
+  React.useEffect(() => {
+    function scrollToDefault() {
+      function findDefault() {
+        for (let idx = 0; idx < img.length; idx++) {
+          if (img[idx].default) {
+            return idx;
+          }
+        }
+        return 0;
+      }
+      let defaultid = findDefault();
+      apiRef.current.scrollToItem(
+        apiRef.current.getItemById(defaultid),
+        // OR if you not sure about id for first item
+        // apiRef.current.getItemById(apiRef.current.items.toItems()[0]),
+        "auto",
+        "start"
+      );
+    }
+    scrollToDefault();
+  }, [loaded]);
 
   const showModal = () => {
     if (modalRef.current) {
       modalRef.current.showModal();
     }
   };
+
+  const loadedToTrue = () => {
+    setLoaded(true);
+  }
 
   const SalePrice = () => {
     if (img[currentStyle].sale_price) {
@@ -33,7 +58,6 @@ export default function Card({ title, price, category, review, img, itemId, ogPr
         <h4 className="card-actions justify-center">${img[currentStyle].original_price}</h4>
       )
     }
-
     }
 
   return (
@@ -55,6 +79,8 @@ export default function Card({ title, price, category, review, img, itemId, ogPr
       itemClassName='imgScrollItem'
       separatorClassName='imgScrollSeparator'
       wrapperClassName='imgScrollWrapper'
+      apiRef={apiRef}
+      onInit={loadedToTrue}
       onWheel={onWheel}
       options={{
         ratio: 0.9,
@@ -78,7 +104,7 @@ export default function Card({ title, price, category, review, img, itemId, ogPr
         </button>
         <dialog ref={modalRef} className="modal">
           <form method="dialog" className="modal-box">
-            <ModalContent ogFeatures={ogProduct.features} features={features} title={title} ogTitle={ogProduct.name} />
+            <ModalContent ogFeatures={ogProduct.features} features={features} title={title} ogTitle={ogProduct.name}/>
           </form>
           <form method="dialog" className="modal-backdrop">
             <button>close</button>
@@ -118,12 +144,12 @@ function ModalContent({ogFeatures, features, title, ogTitle}) {
         </tr>
       </thead>
       <tbody>
-        {mergedFeatures.map(feature => {
+        {mergedFeatures.map((feature, index) => {
           let featuresValue = features.find(item => item.feature === feature)?.value || 'X';
           let ogFeaturesValue = ogFeatures.find(item => item.feature === feature)?.value || 'X';
 
           return (
-            <tr>
+            <tr key={index}>
               <td>{feature}</td>
               <td>{featuresValue}</td>
               <td>{ogFeaturesValue}</td>

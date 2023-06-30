@@ -2,10 +2,9 @@ import React, { useRef } from 'react';
 import { VisibilityContext } from 'react-horizontal-scrolling-menu';
 import 'react-horizontal-scrolling-menu/dist/styles.css';
 
-export default function ImageSlides({ smallImg, largeImg, itemId}) {
+export default function ImageSlides({ smallImg, largeImg, itemId, setLoaded}) {
   const visibility = React.useContext(VisibilityContext);
   const modalRef = useRef(null);
-
 
   const showModal = () => {
     if (modalRef.current && largeImg !== null) {

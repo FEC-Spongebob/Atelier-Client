@@ -12,6 +12,35 @@ export default function Card({ title, price, category, review, img, itemId, ogPr
 
   const [currentStyle, setCurrentStyle] = React.useState(0);
   const { disableScroll, enableScroll } = usePreventBodyScroll();
+  const [loaded, setLoaded] = React.useState(false);
+  const apiRef = React.useRef({});
+
+
+  React.useEffect(() => {
+    function scrollToDefault() {
+      function findDefault() {
+        for (let idx = 0; idx < img.length; idx++) {
+          if (img[idx].default) {
+            return idx;
+          }
+        }
+        return 0;
+      }
+      let defaultid = findDefault();
+      apiRef.current.scrollToItem(
+        apiRef.current.getItemById(defaultid),
+        // OR if you not sure about id for first item
+        // apiRef.current.getItemById(apiRef.current.items.toItems()[0]),
+        "auto",
+        "start"
+      );
+    }
+    scrollToDefault();
+  }, [loaded]);
+
+  const loadedToTrue = () => {
+    setLoaded(true);
+  }
 
   const onClickSetOutfit = () => {
     if(itemId == ogProduct.id) {
@@ -56,6 +85,8 @@ export default function Card({ title, price, category, review, img, itemId, ogPr
       separatorClassName='imgScrollSeparator'
       wrapperClassName='imgScrollWrapper'
       onWheel={onWheel}
+      onInit={loadedToTrue}
+      apiRef={apiRef}
       options={{
         ratio: 0.9,
         rootMargin: "5px",
