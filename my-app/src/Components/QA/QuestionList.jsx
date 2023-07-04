@@ -1,27 +1,25 @@
-import Modal from 'react-modal';
-import React, { useState } from 'react';
+import React from 'react';
 import Question from './Question.jsx';
 
-
-const QuestionList = ({ questions }) => {
-
-  const [length, setLength] = useState(questions.length)
-
-  //   Show 4 q's at a time; splice array in case there are more questions
-  //   Display questions in order of helpfulness
-  //   More Answered Questions button
+const QuestionList = ({ questionData, productName }) => {
 
   return (
     <>
-      {length === 0 ? (
-        <p>No questions. Add one below!</p>
+      {questionData.length === 0 ? (
+        <>
+          <p>No questions. Add one below!</p>
+          <button>Add a New Question</button>
+        </>
       ) : (
-        questions.map((question) => (
-          <Question question={question} />
-        ))
+        <>
+          {questionData
+            .map((question) => (
+              <Question questionID={question.question_id} question={question} productName={productName} />
+            ))}
+        </>
       )}
     </>
-  )
+  );
 };
 
 export default QuestionList;

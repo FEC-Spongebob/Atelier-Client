@@ -1,4 +1,5 @@
 import dummyReviews from './dummyReviews.json'
+import dummyMeta from './dummyMeta.json'
 
 const dummyIO = {
   fakeReviews: (productId) => {
@@ -11,6 +12,10 @@ const dummyIO = {
     })
     review.helpfulness++
     return Promise.resolve(null)
+  },
+
+  fakeMeta: (productId) => {
+    return Promise.resolve(Object.create(dummyMeta))
   },
 
   fakeReport: (reviewId) => {

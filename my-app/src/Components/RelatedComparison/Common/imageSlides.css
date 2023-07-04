@@ -1,0 +1,23 @@
+/* chrome and chromium based */
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.imgScrollContainer {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  width: 200px;
+}
+
+.imgScrollWrapper {
+  width:  fit-content;
+}
+
+.imgScrollItem {
+  width: 200px;
+}
+
+/* scrollContainerClassName='imgScrollContainer'
+      itemClassName='imgScrollItem'
+      separatorClassName='imgScrollSeparator'
+      wrapperClassName='imgScrollWrapper' */

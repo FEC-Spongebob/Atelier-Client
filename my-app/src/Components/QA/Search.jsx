@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAllQuestions } from './routes.js';
 
-const Search = ({ questions }) => {
+const Search = ({ productId, setQuestionData, questionData }) => {
+
   const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    getAllQuestions(productId)
+        .then(data => {
+          setQuestionData(data.results);
+        })
+        .catch(error => {
+          console.error('Error fetching questions:', error);
+        })
+  }, [productId]);
 
   const handleChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
 
     if (value.length >= 3) {
-      const filteredQuestions = questions.filter((question) =>
+      const filteredQuestions = questionData.filter((question) =>
         question.question_body.toLowerCase().includes(value.toLowerCase())
       );
-      setResults(filteredQuestions);
+      setQuestionData(filteredQuestions);
     } else {
-      setResults([]);
+      setQuestionData(questionData);
     }
   };
-
-  //rank results using sort
 
   const style = {
     width: '80%',
@@ -35,9 +44,6 @@ const Search = ({ questions }) => {
         onChange={handleChange}
         style={style}
       />
-      {results.map((question) => (
-        <div key={question.question_id}>{question.question_body}</div>
-      ))}
     </form>
   );
 };

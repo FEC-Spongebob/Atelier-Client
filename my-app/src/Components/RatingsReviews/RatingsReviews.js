@@ -1,20 +1,25 @@
 import ReviewsList from './ReviewsList'
+import ReviewForm from './ReviewForm'
 import { useState, useEffect } from 'react'
 import serverIO from './serverIO'
-import sinon from 'sinon'
-import dummyIO from './test-data/dummyIO'
-
-const spyReviews = sinon.stub(serverIO, "getReviews").callsFake(dummyIO.fakeReviews)
-const spyVote = sinon.stub(serverIO, "castVote").callsFake(dummyIO.fakeVote)
 
 const RatingsReviews = (props) => {
   const { productId } = props
   const [reviews, setReviews] = useState([])
+  const [meta, setMeta] = useState([])
 
   useEffect(()=>{
     serverIO.getReviews(productId)
     .then((responseData)=>{
       setReviews(responseData)
+    })
+    .catch((err)=>{
+      console.error(err.message)
+    })
+
+    serverIO.getMetadata(productId)
+    .then((responseData)=>{
+      setMeta(responseData)
     })
     .catch((err)=>{
       console.error(err.message)
@@ -29,12 +34,21 @@ const RatingsReviews = (props) => {
     .catch((err)=>{
       console.error(err.message)
     })
+
+    serverIO.getMetadata(productId)
+    .then((responseData)=>{
+      setMeta(responseData)
+    })
+    .catch((err)=>{
+      console.error(err.message)
+    })
   }
 
   return (
     <div>
       Customer Reviews
       <ReviewsList reviews={reviews} refresh={refresh}/>
+      <ReviewForm meta={meta} productId={productId} />
     </div>
   )
 }
