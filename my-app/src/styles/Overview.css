@@ -17,6 +17,10 @@
   width: calc(12px + 4vw)
 
 }
+.stars {
+  height: calc(12px + .5vw);
+  width: calc(12px + .5vw)
+}
 .gallery-container {
   position: relative;
   width: 100%;
@@ -129,4 +133,21 @@
   background-position: center;
   transition: background-size 0.3s ease-in-out, background-position 0.3s ease-in-out;
 
+}
+
+.search-container {
+  position: absolute;
+  top: 0;
+  left: 35%;
+  width: 30%;
+  text-align: center;
+  z-index: 1;
+}
+
+.search-input {
+  width: 100%;
+  border: 2px solid #ccc;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
 }

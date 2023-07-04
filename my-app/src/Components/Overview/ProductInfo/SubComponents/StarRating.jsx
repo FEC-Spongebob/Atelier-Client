@@ -25,11 +25,7 @@ const StarRating = ({ratings, reviewsCount}) => {
             key={index}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="1 1 22 22"
-            className={`w-[1.2vw] h-[1.2vw] ${
-              index < Math.floor(ratingAvg)
-                ? "text-yellow-400"
-                : "text-gray-300"
-            }`}
+            className={`stars`}
           >
             <defs>
               {index + 1 === Math.ceil(ratingAvg) && (
@@ -57,7 +53,7 @@ const StarRating = ({ratings, reviewsCount}) => {
         ))}
       </div>
       <div className="text-[1vw] ml-2 self-center">
-        <a href="#reviews-section" style={{fontSize: 'calc(.5em + .5vw)'}} className="text-gray-500 hover:text-gray-700 self-center underline">
+        <a href="#reviews-section" style={{fontSize: 'calc(10px + .2vw)'}} className="text-gray-500 hover:text-gray-700 self-center underline">
         Read all {reviewsCount} reviews
         </a>
       </div>
