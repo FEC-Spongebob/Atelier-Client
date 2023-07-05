@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from './Search.jsx';
 import QuestionList from './QuestionList.jsx';
-import QuestionModal from './QuestionModal.jsx';
-import { getAllQuestions, getProductName } from './routes.js';
 
 const QA = ({ productID }) => {
   const [productName, setProductName] = useState('');
