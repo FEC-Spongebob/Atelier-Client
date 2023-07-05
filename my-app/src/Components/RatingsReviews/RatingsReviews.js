@@ -1,5 +1,6 @@
 import ReviewsList from './ReviewsList'
 import ReviewForm from './ReviewForm'
+import RatingBreakdown from './RatingBreakdown'
 import { useState, useEffect } from 'react'
 import serverIO from './serverIO'
 
@@ -46,9 +47,14 @@ const RatingsReviews = (props) => {
 
   return (
     <div>
-      Customer Reviews
-      <ReviewsList reviews={reviews} refresh={refresh}/>
-      <ReviewForm meta={meta} productId={productId} />
+      <h2 className='text-xl font-semibold'>Customer Reviews</h2>
+      <div className='flex flex-row'>
+        <div className=' w-4/12'>
+          <RatingBreakdown/>
+          <ReviewForm meta={meta} productId={productId} />
+        </div>
+        <ReviewsList reviews={reviews} refresh={refresh}/>
+      </div>
     </div>
   )
 }

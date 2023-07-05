@@ -1,27 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { getAllQuestions } from './routes.js';
 
-const Search = ({ productId, setQuestionData, questionData }) => {
+const Search = ({ setQuestionData, questionData }) => {
 
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    getAllQuestions(productId)
-        .then(data => {
-          setQuestionData(data.results);
-        })
-        .catch(error => {
-          console.error('Error fetching questions:', error);
-        })
-  }, [productId]);
-
   const handleChange = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
-
-    if (value.length >= 3) {
+    setSearchTerm(e.target.value);
+    if (searchTerm.length >= 3) {
       const filteredQuestions = questionData.filter((question) =>
-        question.question_body.toLowerCase().includes(value.toLowerCase())
+        question.question_body.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setQuestionData(filteredQuestions);
     } else {
