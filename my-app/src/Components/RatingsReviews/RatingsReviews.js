@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react'
 import serverIO from './serverIO'
 
 const RatingsReviews = (props) => {
-  const { productID } = props
+  const { productId } = props
   const [reviews, setReviews] = useState([])
   const [meta, setMeta] = useState([])
 
   useEffect(()=>{
-    serverIO.getReviews(productID)
+    serverIO.getReviews(productId)
     .then((responseData)=>{
       setReviews(responseData)
     })
@@ -17,17 +17,17 @@ const RatingsReviews = (props) => {
       console.error(err.message)
     })
 
-    serverIO.getMetadata(productID)
+    serverIO.getMetadata(productId)
     .then((responseData)=>{
       setMeta(responseData)
     })
     .catch((err)=>{
       console.error(err.message)
     })
-  }, [productID])
+  }, [productId])
 
   const refresh = ()=>{
-    serverIO.getReviews(productID)
+    serverIO.getReviews(productId)
     .then((responseData)=>{
       setReviews(responseData)
     })
@@ -35,7 +35,7 @@ const RatingsReviews = (props) => {
       console.error(err.message)
     })
 
-    serverIO.getMetadata(productID)
+    serverIO.getMetadata(productId)
     .then((responseData)=>{
       setMeta(responseData)
     })
@@ -48,7 +48,7 @@ const RatingsReviews = (props) => {
     <div>
       Customer Reviews
       <ReviewsList reviews={reviews} refresh={refresh}/>
-      <ReviewForm meta={meta} productID={productID} />
+      <ReviewForm meta={meta} productId={productId} />
     </div>
   )
 }

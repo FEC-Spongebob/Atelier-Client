@@ -4,30 +4,30 @@ import QuestionList from './QuestionList.jsx';
 import QuestionModal from './QuestionModal.jsx';
 import { getAllQuestions, getProductName } from './routes.js';
 
-const QA = ({ productID }) => {
+const QA = ({ productId }) => {
   const [productName, setProductName] = useState('');
   const [question, setQuestion] = useState('');
   const [questionData, setQuestionData] = useState('');
 
 
   useEffect(() => {
-    getProductName(productID)
+    getProductName(productId)
       .then((response) => {
         setProductName(response.name);
       })
       .catch((error) => console.error('Error fetching answers in Question component', error));
-  }, [productID]);
+  }, [productId]);
 
 
   return (
     <>
       <h3>QUESTIONS & ANSWERS</h3>
-      <Search productID={productID} setQuestionData={setQuestionData} questionData={questionData} getAllQuestions={getAllQuestions} />
+      <Search productId={productId} setQuestionData={setQuestionData} questionData={questionData} getAllQuestions={getAllQuestions} />
       <QuestionList questionData={questionData} productName={productName} />
       <QuestionModal
         productName={productName}
         question={question}
-        productID={productID}
+        productId={productId}
         setQuestion={setQuestion}
       />
       <br />

@@ -2,8 +2,8 @@ import axiosAtelier from '../../axiosAtelier.js';
 const apiURL = process.env.REACT_APP_API_BASE_URL;
 
 // View questions
-export function getAllQuestions(productID) {
-  return axiosAtelier.get(`${apiURL}qa/questions?product_id=${productID}`)
+export function getAllQuestions(productId) {
+  return axiosAtelier.get(`${apiURL}qa/questions?product_id=${productId}`)
     .then(response => response.data)
     .catch(error => {
       console.error('Error fetching questions:', error);
@@ -57,8 +57,8 @@ export function addQuestion(product_id, body, name, email) {
 }
 
 // Get product name
-export function getProductName(productID) {
-  return axiosAtelier.get(`${apiURL}products/${productID}`)
+export function getProductName(productId) {
+  return axiosAtelier.get(`${apiURL}products/${productId}`)
     .then(response => response.data)
     .catch(error => {
       console.error('Error submitting question:', error)

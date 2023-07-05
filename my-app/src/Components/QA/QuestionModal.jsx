@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { addQuestion } from './routes.js';
 
-const QuestionModal = ({ productName, question, productID, setQuestion }) => {
+const QuestionModal = ({ productName, question, productId, setQuestion }) => {
   const questionModalRef = useRef(null);
   const [isWarningVisible, setIsWarningVisible] = useState(false);
   const [isQuestionValid, setIsQuestionValid] = useState(false);
@@ -26,7 +26,7 @@ const QuestionModal = ({ productName, question, productID, setQuestion }) => {
     e.preventDefault();
     if (isQuestionValid && isNicknameValid && isEmailValid && validateEmail(email)) {
       console.log('New question submitted successfully');
-      addQuestion(productID, question, nickname, email)
+      addQuestion(productId, question, nickname, email)
         .then(() => {
           alert('Question submitted!');
           setQuestion('');

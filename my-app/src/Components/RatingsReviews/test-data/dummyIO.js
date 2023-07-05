@@ -2,7 +2,7 @@ import dummyReviews from './dummyReviews.json'
 import dummyMeta from './dummyMeta.json'
 
 const dummyIO = {
-  fakeReviews: (productID) => {
+  fakeReviews: (productId) => {
     return Promise.resolve(dummyReviews.results.slice(0))
   },
 
@@ -14,7 +14,7 @@ const dummyIO = {
     return Promise.resolve(null)
   },
 
-  fakeMeta: (productID) => {
+  fakeMeta: (productId) => {
     return Promise.resolve(Object.create(dummyMeta))
   },
 
