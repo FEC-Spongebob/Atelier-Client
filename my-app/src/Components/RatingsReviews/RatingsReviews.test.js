@@ -7,7 +7,7 @@ import sinon from 'sinon'
 
 
 describe('Ratings and Reviews', ()=>{
-  const RR = <RatingsReviews productId={0}/>
+  const RR = <RatingsReviews productID={0}/>
   const spyReviews = sinon.stub(serverIO, "getReviews").callsFake(dummyIO.fakeReviews)
   const spyVote = sinon.stub(serverIO, "castVote").callsFake(dummyIO.fakeVote)
   const spyMeta = sinon.stub(serverIO, 'getMetadata').callsFake(dummyIO.fakeMeta)

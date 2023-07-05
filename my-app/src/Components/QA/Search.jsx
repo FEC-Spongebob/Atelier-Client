@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { getAllQuestions } from './routes.js';
 
-const Search = ({ productId, setQuestionData, questionData }) => {
+const Search = ({ productID, setQuestionData, questionData }) => {
 
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    getAllQuestions(productId)
+    getAllQuestions(productID)
         .then(data => {
           setQuestionData(data.results);
         })
         .catch(error => {
           console.error('Error fetching questions:', error);
         })
-  }, [productId]);
+  }, [productID]);
 
   const handleChange = (e) => {
     const value = e.target.value;

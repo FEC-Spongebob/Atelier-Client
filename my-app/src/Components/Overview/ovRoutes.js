@@ -23,9 +23,9 @@ export const fetchProductData = async (productID) => {
   }
 };
 
-export const fetchProductStyles = async (productId) => {
+export const fetchProductStyles = async (productID) => {
   try {
-    const response = await axiosAtelier.get(`${apiURL}products/${productId}/styles`);
+    const response = await axiosAtelier.get(`${apiURL}products/${productID}/styles`);
     return response.data;
   } catch (error) {
     console.error('Error fetching product data:', error);
@@ -33,18 +33,18 @@ export const fetchProductStyles = async (productId) => {
   }
 }
 //REVIEW INFO
-export const fetchProductReviewMetaData = async (productId) => {
+export const fetchProductReviewMetaData = async (productID) => {
   try {
-    const response = await axiosAtelier.get(`${apiURL}reviews/meta?product_id=${productId}`);
+    const response = await axiosAtelier.get(`${apiURL}reviews/meta?product_id=${productID}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching product data:', error);
     throw error;
   }
 }
-export const fetchProductReviews = async (productId) => {
+export const fetchProductReviews = async (productID) => {
   try {
-    const response = await axiosAtelier.get(`${apiURL}reviews/?product_id=${productId}`);
+    const response = await axiosAtelier.get(`${apiURL}reviews/?product_id=${productID}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching product data:', error);

@@ -4,12 +4,12 @@ import path from 'path-browserify'
 const API = process.env.REACT_APP_API_BASE_URL
 
 const serverIO = {
-  getReviews: (productId) => {
+  getReviews: (productID) => {
     return axios({
       url: path.join(API, 'reviews'),
       method: 'GET',
       params: {
-        product_id: productId
+        product_id: productID
       }
     })
     .then((response)=>{
@@ -22,12 +22,12 @@ const serverIO = {
     })
   },
 
-  getMetadata: (productId) => {
+  getMetadata: (productID) => {
     return axios({
       url: path.join(API, 'reviews', 'meta'),
       method: 'GET',
       params: {
-        product_id: productId
+        product_id: productID
       }
     })
     .then((response)=>{
