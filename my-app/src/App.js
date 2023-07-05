@@ -12,16 +12,16 @@ function App() {
   return (
     <div className="App">
       <div>
-      <Overview productID = {productID} setProductID={setProductID}></Overview>
+        <Overview productID = {productID} setProductID={setProductID}></Overview>
       </div>
-      <div>
-      <RelatedCompare ></RelatedCompare>
+      <div className="centered">
+        <RelatedCompare ></RelatedCompare>
       </div>
-      <div>
+      <div className="centered">
         <QA productID = {productID}></QA>
       </div>
-      <div>
-      <RatingsReviews productID = {productID}></RatingsReviews>
+      <div className="centered">
+        <RatingsReviews productID = {productID}></RatingsReviews>
       </div>
     </div>
   );
