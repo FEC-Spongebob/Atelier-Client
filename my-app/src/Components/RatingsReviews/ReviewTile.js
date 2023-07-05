@@ -18,14 +18,14 @@ const ReviewTile = (props) => {
   }
 
   return (
-    <div data-testid='review' className='rounded-xl border-2 grow'>
+    <div data-testid='review'>
       <div data-testid='stars'>{rating} Stars</div>
       <div>{name} {date}</div>
       <h3>{summary}</h3>
       <p>{body}</p>
       <div>Was this review helpful?
         <button onClick={handleVote}>
-          {` Yes (${helpfulness})`}
+          {`Yes (${helpfulness})`}
         </button>
       </div>
     </div>

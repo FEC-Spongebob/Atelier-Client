@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { getAllQuestions } from './routes.js';
 
-<<<<<<< HEAD
 const Search = ({ productID, setQuestionData, questionData }) => {
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,17 +15,13 @@ const Search = ({ productID, setQuestionData, questionData }) => {
         })
   }, [productID]);
 
-=======
-const Search = ({ setQuestionData, questionData }) => {
-
-  const [searchTerm, setSearchTerm] = useState('');
-
->>>>>>> 23e96dedd6b5e2d917a27f558955340f44155dc4
   const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-    if (searchTerm.length >= 3) {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (value.length >= 3) {
       const filteredQuestions = questionData.filter((question) =>
-        question.question_body.toLowerCase().includes(searchTerm.toLowerCase())
+        question.question_body.toLowerCase().includes(value.toLowerCase())
       );
       setQuestionData(filteredQuestions);
     } else {

@@ -2,15 +2,9 @@ import axiosAtelier from '../../axiosAtelier.js';
 const apiURL = process.env.REACT_APP_API_BASE_URL;
 
 // View questions
-<<<<<<< HEAD
 export function getAllQuestions(productID) {
   return axiosAtelier.get(`${apiURL}qa/questions?product_id=${productID}`)
     .then(response => response.data)
-=======
-export function getAllQuestions(productId) {
-  return axiosAtelier.get(`${apiURL}qa/questions?product_id=${productId}&count=1000`)
-    .then(response => response.data.results)
->>>>>>> 23e96dedd6b5e2d917a27f558955340f44155dc4
     .catch(error => {
       console.error('Error fetching questions:', error);
     });
@@ -81,7 +75,7 @@ export function addAnswer(question_id, answer, name, email) {
   }
   return axiosAtelier.post(`${apiURL}qa/questions/${question_id}/answers`, data)
     .then(response => response.data)
-    .catch(error => {
+  .catch(error => {
     console.error('Error submitting answer:', error);
     throw error;
   })
@@ -91,8 +85,7 @@ export function addAnswer(question_id, answer, name, email) {
  export function reportAnswer(answerId) {
   return axiosAtelier.put(`${apiURL}qa/answers/${answerId}/report`)
     .then(response => {
-      console.log('response===', response)
-   //   return response.data;
+      return response.data;
     })
     .catch(error => {
       console.error('Error reporting question:', error);
@@ -100,16 +93,32 @@ export function addAnswer(question_id, answer, name, email) {
     });
 }
 
- // Report a question
- export function reportQuestion(questionId) {
-  return axiosAtelier.put(`${apiURL}qa/questions/${questionId}/report`)
-    .then(response => {
-      console.log('response===', response)
-    })
-    .catch(error => {
-      console.error('Error reporting question:', error);
-      throw error;
-    });
-}
+
+
+// // search
+// const searchQuestions = (product_id, query) => {
+//   return axiosAtelier.get(`/qa/questions/search?product_id=${product_id}&query=${query}`);
+// };
+
+
+// export axiosAtelier.get('/qa/questions/search', (req, res) => {
+//   const { product_id, query } = req.query;
+
+//   searchQuestions(product_id, query)
+//     .then(response => {
+//       res.status(200).json(response.data);
+//     })
+//     .catch(error => {
+//       console.error('Error searching questions:', error);
+//       res.sendStatus(500);
+//     });
+// });
+
+
+// Helper functions
+
+// const reportQuestion = (question_id) => {
+//   return axiosAtelier.put(`/qa/questions/${question_id}/report`);
+// };
 
 

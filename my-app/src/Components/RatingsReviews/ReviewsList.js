@@ -13,8 +13,8 @@ const ReviewsList = (props) => {
   }
 
   return (
-    <div className='grow'>
-      <ol >
+    <div id='ReviewsList'>
+      <ol id='Reviews'>
         {reviews.slice(0, displayCount).map((review, i)=>{
           return <ReviewTile
             review={review}
@@ -23,7 +23,7 @@ const ReviewsList = (props) => {
           />
         })}
       </ol>
-      <button className='btn' onClick={handleClick} hidden={hideButton}>More Reviews</button>
+      <button onClick={handleClick} hidden={hideButton}>More Reviews</button>
     </div>
   )
 }
