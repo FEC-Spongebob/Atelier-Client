@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Overview></Overview>
       <RelatedCompare></RelatedCompare>
-      <QA productId={37312}></QA>
+      <QA productId={37311}></QA>
       <RatingsReviews productId={37311}></RatingsReviews>
     </div>
   );

@@ -82,12 +82,12 @@ const Question = ({ questionId, question, productName }) => {
         <>
           {answerData.length > visibleAnswers && !allAnswersLoaded ? (
             answerData.slice(0, visibleAnswers).map((answer) => (
-              <div class="flex flex-row items-center justify-between items-center w-full mr-4 p-3"><Answer key={answer.answer_id} answerId={answer.answer_id} answer={answer} helpfulness={answer.helpfulness} setHelpfulness={setHelpfulness}/></div>
+              <div class="flex flex-row items-center justify-between items-center w-full mr-4 p-3"><Answer key={answer.answer_id} answerId={answer.answer_id} answer={answer}/></div>
             ))
           ) : (
             answerData.map((answer) => (
               <div class="flex flex-row items-center justify-between items-center w-full mr-4 p-3">
-              <Answer key={answer.answer_id} answerId={answer.answer_id} answer={answer} helpfulness={answer.helpfulness} setHelpfulness={setHelpfulness}/></div>
+              <Answer key={answer.answer_id} answerId={answer.answer_id} answer={answer} /></div>
             ))
           )}
         </>

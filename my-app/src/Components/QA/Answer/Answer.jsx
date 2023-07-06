@@ -48,7 +48,7 @@ const Answer = ({ answer, answerId }) => {
       </div>
       <p>
         <small>
-          by {answer.answerer_name}, {format(new Date(answer.date), 'MM/dd/yyyy')} &nbsp;&nbsp; | &nbsp;&nbsp; Helpful?&nbsp;&nbsp;
+        by {answer.answerer_name}, {format(new Date(answer.date), 'MM/dd/yyyy')} &nbsp;&nbsp; | &nbsp;&nbsp; Helpful?&nbsp;&nbsp;
           <button onClick={handleClick} style={{ textDecorationLine: 'underline' }}>
             Yes ({helpfulness})
           </button>
