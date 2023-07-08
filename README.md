@@ -7,11 +7,13 @@ Given a business document and visual design, we worked as a group of three softw
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 
+
 ## Table of Contents
 
 1. [Team Members](#team-members)
 3. [Installation Requirements](#installation-requirements)
 3. [Future Improvements](#future-improvements)
+
 
 ## Team Members
 Group Name: Sponebob
@@ -34,6 +36,7 @@ Group Name: Sponebob
 
 ![GIF of Ratings and Reviews module](./public/RR.gif)
 
+
 ## Installation Requirements
 
 This project utilizes webpack, babel, React, Axios, Tailwind... should I include more?
@@ -49,6 +52,7 @@ npm start
 2. Add your personal GitHub token to the .env file
 
 3. Look at the page on localhost:3000
+
 
 ## Future Improvements
 
