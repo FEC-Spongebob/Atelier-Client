@@ -15,19 +15,19 @@ Given a business document and visual design, we worked as a group to build out t
 
 ## Team Members
 
-* ![Liam McEneaney - Product Overview Module](https://github.com/swersk/Atelier-Client/blob/main/my-app/public/OV.gif?raw=true)
+* Liam McEneaney - Product Overview Module ![Liam McEneaney - Product Overview Module](https://github.com/swersk/Atelier-Client/blob/main/my-app/public/OV.gif?raw=true)
 
 
 
-* ![Meade Reamy - Related Products Module](/RP.gif)
+* Meade Reamy - Related Products Module ![Meade Reamy - Related Products Module](https://github.com/swersk/Atelier-Client/blob/main/my-app/public/RP.gif?raw=true)
 
 
 
-* ![Lauren Swersky - Questions & Answers Module](/QA.gif)
+* Lauren Swersky - Questions & Answers Module ![Lauren Swersky - Questions & Answers Module](https://github.com/swersk/Atelier-Client/blob/main/my-app/public/QA.gif?raw=true)
 
 
 
-* ![Mike Johnson - Ratings and Reviews Module](/RR.gif)
+* Mike Johnson - Ratings and Reviews Module ![Mike Johnson - Ratings and Reviews Module](https://github.com/swersk/Atelier-Client/blob/main/my-app/public/RR.gif?raw=true)
 
 
 ## Installation Requirements
