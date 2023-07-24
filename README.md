@@ -15,7 +15,7 @@ Given a business document and visual design, we worked as a group to build out t
 
 ## Team Members
 
-* ![Liam McEneaney - Product Overview Module](/OV.gif)
+* ![Liam McEneaney - Product Overview Module](https://github.com/swersk/Atelier-Client/blob/main/my-app/public/OV.gif?raw=true)
 
 
 
